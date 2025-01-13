@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/userdashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Shop</title>
+</head>
+
+<body>
+
+
+    <div style="width: 100%;" class="row">
+        <div class="col-md-2">
+            <div style="text-align: center;" class="nav-link col-md-12 mt-3">
+                <a href="/home"><img src="/images/home.png" alt=""></a>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div style="text-align: center;" class="nav-link col-md-12 mt-3">
+                <img src="/images/logo_green.png" alt="">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+
+        </div>
+
+
+
+
+    </div>
+
+
+    <section>
+        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-5">
+            <p class="p1">Together, we’re building a world where food is shared, not wasted <br> join <span
+                    style="color: #8cc342;">Grap The Goodies</span> on this journey.</p>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <div data-aos="fade-up" data-aos-duration="3000" class="seprate row">
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/bread.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/meat.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/salad.png" alt="">
+
+            </div>
+
+
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/burger.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/carrot.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+                <img width="50%" src="/images/coffee.png" alt="">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container mt-5 my-4">
+        <% if (bags.length > 0) { %>
+            <h2 data-aos="fade-up" data-aos-duration="3000" class="text-center mb-4 fs-1">
+                <span style="color: #8cc342;">Available</span> Bags
+            </h2>
+    
+            <div class="row">
+                <!-- Sorting Options -->
+                <div data-aos="fade-up" data-aos-duration="3000" class="col-12 col-md-3 mb-4">
+                    <div class="bg-black p-3 rounded">
+                        <form method="GET" action="/shop" class="d-flex flex-column gap-2">
+                            <select name="sortBy" class="form-select">
+                                <option value="" disabled selected>Price</option>
+                                <option value="priceAsc" <%= sortBy === 'priceAsc' ? 'selected' : '' %>>Low to High</option>
+                                <option value="priceDesc" <%= sortBy === 'priceDesc' ? 'selected' : '' %>>High to Low</option>
+                            </select>
+                            <button type="submit" class="btn btn-success w-100">Search</button>
+                        </form>
+                    </div>
+    
+                    <!-- Partner Logos -->
+                    <div class="row mt-4 g-3">
+                        <% partners.forEach(partner => { %>
+                            <div class="col-6 col-md-4">
+                                <a href="/shop/<%= userId %>?partnerName=<%= partner.name %>">
+                                    <img src="/uploads/<%= partner.photo %>" alt="<%= partner.name %>" class="img-fluid rounded" />
+                                </a>
+                            </div>
+                        <% }) %>
+                    </div>
+    
+                    <!-- Cancel Button -->
+                    <div class="text-center mt-4">
+                        <a href="/shop" class="text-white text-decoration-none">
+                            <img src="/images/cancel.png" alt="Cancel" class="img-fluid mb-2" style="width: 50px;" /><br>Cancel
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Bags -->
+                <div class="bags col-12 col-md-9">
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                        <% bags.forEach(bag => { %>
+                            <div data-aos="fade-up" data-aos-duration="3000" class="col">
+                                <div class="card text-bg-dark h-100">
+                                    <img src="<%= bag.bagPhoto ? '/uploads/' + bag.bagPhoto : '/images/logo_green.png' %>" class="card-img-top" alt="<%= bag.bagName %>" style="height: 200px; object-fit: cover;">
+    
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-8">
+                                                <h5 class="card-title"><%= bag.bagName %></h5>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <img src="<%= bag.partnerPhoto ? '/uploads/' + bag.partnerPhoto : '/images/upload.png' %>" alt="Partner Logo" class="img-fluid rounded-circle" style="width: 40px;">
+                                            </div>
+                                        </div>
+    
+                                        <div class="row mt-3 align-items-center">
+                                            <div class="col-8">
+                                                <% if (bag.quantity == 0) { %>
+                                                    <span class="text-danger">Out of Stock</span>
+                                                <% } else { %>
+                                                    <a href="/user/viewBag/<%= bag.bagId %>" class="btn btn-success">View Bag</a>
+                                                <% } %>
+                                            </div>
+                                            <div class="col-4 text-end">
+                                                <strong style="color: #8cc342;">$<%= bag.priceBefore %></strong><br>
+                                                <small style="color: #6c757d; text-decoration: line-through;">$<%= bag.priceAfter %></small>
+                                            </div>
+                                        </div>
+                                    </div>
+    
+                                    <div class="card-footer">
+                                        <small class="text-muted">
+                                            Added on 
+                                            <% const birthdate = new Date(bag.addedAt); %>
+                                            <%= birthdate.getDate() %>/<%= birthdate.getMonth() + 1 %>/<%= birthdate.getFullYear() %>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        <% } else { %>
+            <h2 data-aos="fade-up" data-aos-duration="3000" class="text-center mb-4 fs-1">
+                <span style="color: #8cc342;">No Available</span> Bags Today 
+                <img src="/images/sad.png" alt="Sad" />
+            </h2>
+        <% } %>
+    </div>
+
+
+
+    <!-- footer -->
+
+
+    <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        AOS.init();
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+
+
+</body>
+
+</html>

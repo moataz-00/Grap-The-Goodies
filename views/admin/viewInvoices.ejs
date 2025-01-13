@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Dash Board</title>
+</head>
+
+<body>
+
+
+
+
+
+  <%- include('../partner/partials/navbar') %>
+
+
+    <div class="dashboard">
+
+      <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+
+
+
+          <div class="row">
+
+
+
+            <div class=" row">
+              <div style="text-align: center;" class="col-md-6 ">
+
+                <img src="/images/bread.png" alt="">
+              </div>
+
+
+              <div style="text-align: center;" class="col-md-6 ">
+                <img src="/images/carrot.png" alt="">
+              </div>
+            </div>
+
+            <h1>Invoices Table</h1>
+
+
+
+
+
+
+            <!-- Search Bar -->
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Search orders..."
+                onkeyup="filterTable('searchInput', 'bagstable')">
+            </div>
+
+          </div>
+
+
+          <div class="table-container">
+
+            <table id="bagstable">
+              <thead>
+                <tr>
+                  <th>Invoice Number</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Issued At</th>
+                  <th>Order Code</th>
+                  <th>Partner Name</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (invoice.length> 0) { %>
+                  <% invoice.forEach(invoices=> { %>
+                    <tr>
+                      <td>
+                        <%= invoices.invoice_number %>
+                      </td>
+                      <td>
+                        <%= invoices.amount %>
+                      </td>
+                      <td>
+                        <%= invoices.status %>
+                      </td>
+                      <td>
+
+
+                        <% const createdAt=new Date(invoices.issued_at); %>
+                          <%= createdAt.getDate() %>/<%= createdAt.getMonth() + 1 %>/<%= createdAt.getFullYear() %>
+                                </small>
+
+
+
+                      </td>
+                      <td>
+                        <%= invoices.order_code %>
+                      </td>
+                      <td>
+                        <%= invoices.partner_name %>
+
+                      </td>
+
+                      <td>
+                        <a href="/admin/viewInvoice/<%= invoices.invoice_id %>"><button
+                            class="edit-btn">View</button></a>
+
+                      </td>
+
+                    </tr>
+                    <% }) %>
+                      <% } else { %>
+                        <tr>
+                          <td style="text-align: center;" colspan="9">No Invoices .</td>
+                        </tr>
+                        <% } %>
+
+              </tbody>
+            </table>
+
+
+          </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

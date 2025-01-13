@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Profile</title>
+</head>
+
+<body>
+
+
+  <%- include('partials/navbar') %>
+
+    <!-- <div data-aos="fade-up" data-aos-duration="3000" class="dashboard">
+        
+    </div> -->
+
+    <div class="profile-container">
+
+      <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+
+          <div class=" row">
+            <div style="text-align: center;" class="col-md-6 ">
+
+              <img src="/images/bread.png" alt="">
+            </div>
+
+
+            <div style="text-align: center;" class="col-md-6 ">
+              <img src="/images/carrot.png" alt="">
+            </div>
+          </div>
+          <!-- Profile Card -->
+          <div class="profile-card">
+            <div class="profile-image">
+              <img src="/uploads/<%= profile.photo %>" alt="Profile Picture">
+            </div>
+            <div style="text-align: start;" class="profile-info">
+              <h2 style="text-align: center;">
+                <%= profile.name %>
+              </h2>
+              <p>Email: <%= profile.email %>
+              </p>
+              <p>Number: <%= profile.number %>
+              </p>
+              <p>Category: <%= profile.category %>
+              </p>
+              <p>Address: <%= profile.address %>
+              </p>
+              <p>City: <%= profile.city %>
+              </p>
+              <p>Country: <%= profile.country %>
+              </p>
+            </div>
+            <div class="profile-actions">
+              <div class="row">
+
+                <div style="text-align: end;" class="col-md-12">
+                  <a href="/partner/profileUpdate/<%= profile.id %>"><button class="edit-btn">Edit Profile</button></a>
+                </div>
+
+
+              </div>
+
+            </div>
+          </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

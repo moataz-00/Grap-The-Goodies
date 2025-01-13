@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Dash Board</title>
+</head>
+
+<body>
+
+
+
+
+
+    <%- include('../partner/partials/navbar') %>
+
+
+        <div class="dashboard">
+
+            <!-- Success message -->
+            <% if (successMessage) { %>
+                <div class="alert success">
+                    <%= successMessage %>
+                </div>
+                <% } %>
+
+
+
+                    <div class="row">
+
+
+
+                        <div class=" row">
+                            <div style="text-align: center;" class="col-md-6 ">
+
+                                <img src="/images/bread.png" alt="">
+                            </div>
+
+
+                            <div style="text-align: center;" class="col-md-6 ">
+                                <img src="/images/carrot.png" alt="">
+                            </div>
+                        </div>
+
+                        <h1>Partners Table</h1>
+
+
+                        <!-- Search Bar -->
+                        <div class="search-container">
+                            <input type="text" id="searchInput" placeholder="Search messages..."
+                                onkeyup="filterTable('searchInput', 'bagstable')">
+                        </div>
+
+                    </div>
+
+
+                    <div class="table-container">
+
+                        <table id="bagstable" border="1">
+                            <thead>
+                                <tr>
+                                    <th>Partner Name</th>
+                                    <th>Partner Number</th>
+                                    <th>Message</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% if (complaints.length> 0) { %>
+                                    <% complaints.forEach(complaint=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= complaint.partnerName %>
+                                            </td>
+                                            <td>
+                                                <%= complaint.partnerNumber %>
+                                            </td>
+                                            <td style="width: 50%;">
+                                                <%= complaint.message %>
+                                            </td>
+                                            <td>
+                                                <form method="POST"
+                                                    action="/admin/complaints/<%= complaint.complaintId %>/status">
+                                                    <select class="form-select" name="status" onchange="this.form.submit()">
+                                                        <option value="pending" <% if (complaint.status==='pending' ) {
+                                                            %>selected<% } %>>Pending</option>
+                                                        <option value="solved" <% if (complaint.status==='solved' ) { %>
+                                                            selected<% } %>>Solved</option>
+                                                    </select>
+                                                </form>
+                                            </td>
+                                            <td>
+                                                <% if (complaint.status==='solved' ) { %>
+                                                    <form method="POST"
+                                                        action="/admin/complaints/<%= complaint.complaintId %>/delete">
+                                                        <button type="submit">Delete</button>
+                                                    </form>
+                                                    <% } %>
+                                            </td>
+                                        </tr>
+                                        <% }) %>
+                                            <% } else { %>
+                                                <tr>
+                                                    <td style="text-align: center;" colspan="9">No Messages</td>
+                                                </tr>
+                                                <% } %>
+                            </tbody>
+                        </table>
+
+
+                    </div>
+        </div>
+
+
+
+
+        <script src="/dashboard.js"></script>
+</body>
+
+</html>

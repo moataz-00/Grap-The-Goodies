@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Orders</title>
+</head>
+
+<body>
+
+
+
+  <%- include('partials/navbar') %>
+
+  <div class="dashboard">
+
+    <div class=" row">
+      <div style="text-align: center;" class="col-md-6 ">
+
+        <img src="/images/bread.png" alt="">
+      </div>
+
+
+      <div style="text-align: center;" class="col-md-6 ">
+        <img src="/images/berryjam.png" alt="">
+      </div>
+    </div>
+    <div class="row">
+
+
+      <h1>Orders Table</h1>
+
+      <!-- Search Bar -->
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search orders..."
+          onkeyup="filterTable('searchInput', 'orderstable')">
+      </div>
+
+    </div>
+
+
+    <div class="table-container">
+      <table id="orderstable">
+        <thead>
+          <tr >
+
+            
+            <th>Client Name</th>
+            <th>Price</th>
+            <th>Bag Name</th>
+            <th>Status</th>
+            <th>Quantity</th>
+            <th style="text-align: center;">Add at</th>
+            <th>Pick Up Code</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% if (orders.length > 0) { %>
+          <% orders.forEach(order=> { %>
+            <tr>
+             
+              <td>
+                <%= order.user_name %>
+              </td>
+              <td>
+                <%= order.totalPrice %>
+              </td>
+              <td>
+                <%= order.bag_name %>
+              </td>
+              <td>
+                <%= order.status %>
+              </td>
+              <td>
+                <%= order.orderQuantity %>
+              </td>
+              <td>
+                <%= new Date(order.addedAt).toLocaleString() %>
+              </td>
+              <td>
+                <%= order.orderCode %>
+              </td>
+
+
+            </tr>
+            <% }); %>
+
+
+        </tbody>
+      </table>
+
+      <% } else { %>
+        <tr>
+          <td style="text-align: center;" colspan="9">No invoices found .</td>
+      </tr>
+  <% } %>
+    </div>
+  </div>
+
+
+
+
+  <script src="/dashboard.js"></script>
+</body>
+
+</html>

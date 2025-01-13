@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Dash Board</title>
+</head>
+
+<body>
+
+
+
+
+
+  <%- include('../partner/partials/navbar') %>
+
+
+    <div class="dashboard">
+
+      <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+
+
+
+          <div class="row">
+
+
+
+            <div class=" row">
+              <div style="text-align: center;" class="col-md-6 ">
+
+                <img src="/images/bread.png" alt="">
+              </div>
+
+
+              <div style="text-align: center;" class="col-md-6 ">
+                <img src="/images/carrot.png" alt="">
+              </div>
+            </div>
+
+            <h1>Partners Table</h1>
+
+
+            <!-- Search Bar -->
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Search orders..."
+                onkeyup="filterTable('searchInput', 'bagstable')">
+            </div>
+
+          </div>
+
+
+          <div class="table-container">
+
+            <table id="bagstable">
+              <thead>
+                <tr>
+                  <th>Partner ID</th>
+                  <th>Partner Name</th>
+                  <th>Number</th>
+                  <th>Category</th>
+                  <th>Address</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if (partners.length> 0) { %>
+                  <% partners.forEach(partner=> { %>
+                    <tr>
+                      <td>
+                        <%= partner.id %>
+                      </td>
+                      <td>
+                        <%= partner.name %>
+                      </td>
+                      <td>
+                        <%= partner.number %>
+                      </td>
+                      <td>
+                        <%= partner.category %>
+                      </td>
+                      <td>
+                        <%= partner.address %>
+                      </td>
+                      <td>
+                        <a href="/admin/viewPartner/<%= partner.id %>"><button class="edit-btn">View</button></a>
+
+                      </td>
+                    </tr>
+                    <% }) %>
+                      <% } else { %>
+                        <tr>
+                          <td style="text-align: center;" colspan="9">No Messages .</td>
+                        </tr>
+                        <% } %>
+
+              </tbody>
+            </table>
+
+
+          </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

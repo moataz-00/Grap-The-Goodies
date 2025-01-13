@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/userdashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Profile</title>
+</head>
+
+<body>
+
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/home" class="nav-link">
+                            <img src="/images/home.png" alt=""><br>Home
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/Orders/<%=userId%>" class="nav-link">
+                            <img src="/images/time.png" alt=""><br>Order History
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Center Section -->
+            <div class="col-12 col-md-4 text-center mt-3">
+                <img style="border-radius: 100%;" width="30%" src="/images/logo_green.png" alt="">
+            </div>
+    
+            <!-- Right Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/profile/<%=userId%>" class="nav-link">
+                            <img src="/images/user.png" alt=""><br>Profile
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/logout" class="nav-link">
+                            <img src="/images/logout.png" alt=""><br>Log Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section style="width: 100%;">
+
+
+        <div class="container support">
+            <% if (successMessage) { %>
+                <div class="alert success">
+                    <%= successMessage %>
+                </div>
+                <% } %>
+                    <section>
+                        <div data-aos="fade-up" data-aos-duration="3000" class="mt-5">
+                            <div class="row">
+                                <p class="head"><span style="color: #8cc342;">Check Out,</span>
+
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="word-spacing: 5px;" class="p1 ">
+                                    Do You Want A Help ?
+                                </p>
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="dissapear seprate row">
+                        <div style="text-align: center;" class="col-md-4 mt-5">
+
+                            <img src="/images/bread.png" alt="">
+                        </div>
+
+                        <div class="col-md-4 dissapear">
+                            <div class="vertical-line mx-auto mt-5"></div>
+                        </div>
+
+                        <div style="text-align: center;" class="col-md-4 mt-5">
+                            <img src="/images/carrot.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="col-md-8 mt-5 ">
+
+
+                                <div class="checkout_card">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <div class="leftside">
+                                                <div class="row">
+                                                    <div class="col-4 col-md-12">
+                                                        <img src="/images/carrot.png" alt="Shoes" /> <br>
+                                                    </div>
+                                                    <div class="col-4 col-md-12">
+                                                        <img src="/images/bread.png" alt="Shoes" />
+                                                    </div>
+                                                    <div class="col-4 col-md-12">
+                                                        <img src="/images/burger.png" alt="Shoes" />
+                                                    </div>
+                                                    <div class="col-4 col-md-12">
+                                                        <img src="/images/berryjam.png" alt="Shoes" />
+                                                    </div>
+                                                  
+                                                </div>
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-10">
+                                            <div class="rightside">
+                                                <form action="/order" method="POST">
+
+                                                    <h2>Payment Information</h2>
+                                                    
+                                                    
+                                                    
+
+
+
+                                                    <h2 class="mt-5">Order Details</h2>
+                                                    <input type="hidden" name="bag_id" value="<%= bag.bagId %>" />
+                                                    <input type="hidden" name="partner_id"
+                                                        value="<%= bag.partnerId %>" />
+                                                    <input type="hidden" name="total_price" class="totalPrice"
+                                                        value="<%= bag.priceAfter %>" />
+                                                    <input type="hidden" name="user_id" value="<%= userId %>" />
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="quantity-control">
+                                                                <p>Quantity</p>
+                                                                <img class="btn-quantity" id="decrease"
+                                                                    src="/images/minus.png" alt="Decrease">
+                                                                <input type="number" name="quantity" id="quantity"
+                                                                    value="1" min="1" max="<%= bag.quantity %>" required
+                                                                    readonly>
+                                                                <img class="btn-quantity" id="increase"
+                                                                    src="/images/plus.png" alt="Increase">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-md-6">
+                                                            <p>Total Price: EGP <span class="totalPrice">
+                                                                    <%= bag.priceAfter %>
+                                                                </span></p>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+                                                    <button type="submit" class="button">CheckOut</button>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="col-md-4 mt-5">
+
+
+
+                                <div class="card text-bg-dark  " style="width: auto;">
+                                    <img src="/uploads/<%= bag.bagPhoto %>" class="card-img-top" alt="Partner Image"
+                                        style="height: 200px; object-fit: cover;">
+
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="card-title">
+                                                    <img width="20%" src="/images/bag.png" alt="">
+                                                    <%= bag.bagName %>
+                                                </h5>
+                                            </div>
+
+                                            <div style="text-align: end;" class="col-md-6">
+                                                <div class="profile-image">
+                                                    <img src="/uploads/<%= bag.partnerPhoto %>" alt="Profile Picture">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <p class="card-text">
+                                            <%= bag.description %>
+                                        </p>
+
+
+
+                                        <div class="row">
+
+                                            <div class="col-md-6">
+                                                <p class="card-text">
+                                                    <img width="30%" src="/images/quantity.png" alt="">
+                                                    <%= bag.quantity %>
+                                                </p>
+                                            </div>
+
+
+
+                                            <div style="text-align:-webkit-right;" class="col-md-6">
+
+
+                                                <p>Price per bag <br>EGP <span id="pricePerBag">
+                                                        <%= bag.priceAfter %>
+                                                    </span></p>
+
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">Added on <%= `${new Date(bag.addedAt).getDate()}/${new
+                                                Date(bag.addedAt).getMonth() + 1}/${new
+                                                Date(bag.addedAt).getFullYear()}` %>
+                                        </small>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+        </div>
+
+    </section>
+
+
+    <!-- footer -->
+
+
+    <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.bundle.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.min.js"></script>
+    <script src="/checkout.js"></script>
+
+
+    <script>
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+</body>
+
+</html>

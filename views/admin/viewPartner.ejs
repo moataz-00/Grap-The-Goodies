@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Profile</title>
+</head>
+
+<body>
+
+
+    <%- include('../partner/partials/navbar') %>
+
+        <!-- <div data-aos="fade-up" data-aos-duration="3000" class="dashboard">
+        
+    </div> -->
+
+        <div class="profile-container">
+
+            <!-- Success message -->
+            <% if (successMessage) { %>
+                <div class="alert success">
+                    <%= successMessage %>
+                </div>
+                <% } %>
+
+                    <div class=" row">
+                        <div style="text-align: center;" class="col-md-6 ">
+
+                            <img src="/images/bread.png" alt="">
+                        </div>
+
+
+                        <div style="text-align: center;" class="col-md-6 ">
+                            <img src="/images/carrot.png" alt="">
+                        </div>
+                    </div>
+                    <!-- Profile Card -->
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="/uploads/<%= partner.photo %>" alt="Profile Picture">
+                        </div>
+                        <div style="text-align: start;" class="profile-info">
+                            <h2 style="text-align: center;">
+                                <%= partner.name %>
+                            </h2>
+                            <p>Email: <%= partner.email %>
+                            </p>
+                            <p>Number: <%= partner.number %>
+                            </p>
+                            <p>Category: <%= partner.category %>
+                            </p>
+                            <p>Address: <%= partner.address %>
+                            </p>
+                            <p>City: <%= partner.city %>
+                            </p>
+                            <p>Country: <%= partner.country %>
+                            </p>
+
+                            <div class="horzintal-line mt-3"></div>
+
+
+                            <div class="row mt-3">
+
+                                <p>Password: <%= partner.password %>
+                                </p>
+
+                                <form action="/update-password" method="POST">
+                                    <input type="hidden" name="partner_id" value="<%= partner.id %>">
+                                    <label style="color: #666;" for="name">New Password:</label>
+                                    <input type="text" id="name" name="password" required>
+
+
+                                    <button style="background-color: #4CAF50;color:white" type="submit">Save Password</button>
+                                </form>
+
+
+                               
+
+                            </div>
+
+                            <div class="row mt-3">
+                                <p>If you want to delete partner</p>
+                                <form method="POST"
+                                action="/admin/partners/<%= partner.id %>/delete">
+                                <button style="background-color: #f44336;color:white" type="submit">Delete</button>
+                            </form>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+        </div>
+
+
+
+
+        <script src="/dashboard.js"></script>
+</body>
+
+</html>

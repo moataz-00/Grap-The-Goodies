@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eroor</title>
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+
+</head>
+
+<body>
+    <div class="row align-items-center text-center text-md-left">
+
+        <!-- Logo -->
+        <div class="nav-link col-12 col-md-6 mt-3">
+            <img src="/images/logo_green.png" alt="Logo" class="img-fluid">
+        </div>
+        <!-- Shop Now Button -->
+        
+    
+        
+    
+        <!-- Login/Signup Buttons -->
+        <div class="col-12 col-md-6 mt-3 d-flex justify-content-center justify-content-md-end">
+            <a href="/shop" class="me-2">
+                <button class="reg">Shop Now</button>
+            </a>
+            <a  href="/partner/login" class="me-2 dissapear">
+                <button class="log">Business</button>
+            </a>
+            <a href="/user/login" class="me-2 dissapear">
+                <button class="reg">Log In</button>
+            </a>
+        </div>
+    </div>
+
+
+    <section style="width: 100%;">
+
+        <div class="container ">
+            <section>
+                <div data-aos="fade-up" data-aos-duration="3000" class="mt-5">
+                    <div class="row">
+                        <p class="head">Error<span style="color: #8cc342;"> 404</span></p>
+                    </div>
+                    <div class="row">
+                        <p style="word-spacing: 5px;" class="p1">
+                            Page Not Found
+                        </p>
+                    </div>
+
+
+                </div>
+
+            </section>
+
+            <div data-aos="fade-up" data-aos-duration="3000" class="row mt-5">
+
+                <p class="p1">You need to go Back to <a href="/home"><img width="10%" src="/images/home.png" alt=""></a></p>
+
+            </div>
+
+            
+
+           
+
+        </div>
+
+
+    </section>
+
+
+
+     <!-- footer -->
+
+
+     <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        AOS.init();
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+
+</body>
+
+</html>

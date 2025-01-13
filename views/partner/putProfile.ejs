@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Profile</title>
+</head>
+
+<body>
+
+
+    <%- include('partials/navbar') %>
+
+        <!-- <div data-aos="fade-up" data-aos-duration="3000" class="dashboard">
+        
+    </div> -->
+
+
+
+
+        <div class="profile-container">
+            <form action="/partner/update/<%=profile.id %>" method="POST" enctype="multipart/form-data">
+                <!-- Profile Card -->
+                <div class="profile-card">
+
+                    <div class=" row">
+                        <div style="text-align: center;" class="col-md-6 ">
+
+                            <img src="/images/meat.png" alt="">
+                        </div>
+
+
+                        <div style="text-align: center;" class="col-md-6 ">
+                            <img src="/images/wrap.png" alt="">
+                        </div>
+                    </div>
+
+
+                    <div>
+                        <img id="photoPreview"
+                            src="<%= profile.photo ? '/uploads/' + profile.photo : '/images/default-photo.png' %>"
+                            alt="Photo Preview"
+                            style=" width: 150px;height: 150px;border-radius: 50%;margin-bottom: 15px;">
+                    </div>
+<div style="text-align: center;"><span style="color: #333;">when you change photo, it will change in navbar with next login</span></div>
+                    <div>
+                        <label for="photo" class="custom-file-upload mt-3">Upload Photo</label>
+                        <input type="file" id="photo" name="photo" hidden accept="image/*"
+                            onchange="previewPhoto(this)">
+                    </div>
+
+                    <div class="horzintal-line mt-3"></div>
+
+                    <div style="text-align: start;" class="profile-info mt-3">
+                        <h2 style="text-align: center;">
+                            <%= profile.name %>
+                        </h2>
+                        <p>Email: <input type="text" name="email" value="<%= profile.email %>"></p>
+                        <p>Number: <input type="text" name="phone" value="<%= profile.number %>"></p>
+                        <p>Category: <input type="text" name="category" value="<%= profile.category %>"> </p>
+                        <p>Address: <input type="text" name="address" id="" value="<%= profile.address %>"> </p>
+                        <p>City: <input type="text" name="city" id="" value="<%= profile.city %>"> </p>
+                        <p>Country: <input type="text" name="country" value="<%= profile.country %>"> </p>
+                    </div>
+                    <div class="profile-actions">
+                        <div class="row">
+
+
+                            <div style="text-align: end;" class="col-md-12">
+                                <button type="submit" class="edit-btn">Save Changes</button>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+
+
+
+
+        <script src="/dashboard.js"></script>
+</body>
+
+</html>

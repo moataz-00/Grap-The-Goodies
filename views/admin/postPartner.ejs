@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Create Bags</title>
+</head>
+
+<body>
+
+
+
+
+    <%- include('../partner/partials/navbar') %>
+
+
+
+    <div class="form-container">
+
+        <div class="row">
+            
+                  <h1>Hello Mr <span style="color: #45a049;"><%= partner.name %></span> , lets add some partners</h1>
+        
+          </div>
+        
+        <form action="/admin/viewPartners" method="POST" enctype="multipart/form-data">
+            <label for="name">Partner Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <div style="text-align: center;">
+                <img id="photoPreview"
+                    src="/images/upload.png"
+                    alt="Photo Preview"
+                    style=" width: auto;height: 100px;border-radius:1%;margin-top: 15px;">
+            </div>
+
+            <div>
+                <label style="color:white" for="photo" class="custom-file-upload mt-3">Upload Partner Photo</label>
+                <input type="file" id="photo" name="photo" hidden accept="image/*"
+                    onchange="previewPhoto(this)">
+            </div>
+
+            <label for="description">Email:</label>
+            <input type="text" id="description" name="email" rows="4" required>
+
+            <label for="quantity">Password:</label>
+            <input type="text" id="quantity" name="password"  required>
+
+            <label for="pickUpTime">Number:</label>
+            <input type="text" id="number" name="number" required>
+
+            <label for="pickUpTime">Category:</label>
+            <select required class="form-select" id="gender" name="category">
+                <option value="Resturant" <%=partner.category==='Resturant' ? 'selected' : '' %>
+                    >Resturant
+                </option>
+                <option value="Fast Food" <%=partner.category==='Fast Food' ? 'selected' : '' %>
+                    >Fast Food
+                </option>
+                <option value="Coffe Shop" <%=partner.category==='Coffe Shop' ? 'selected' : '' %>
+                    >Coffe Shop
+                </option>
+                <option value="Sushi" <%=partner.category==='Sushi' ? 'Sushi' : '' %>
+                    >Sushi
+                </option>
+                <option value="Bakery" <%=partner.category==='Bakery' ? 'selected' : '' %>
+                    >Bakery
+                </option>
+                <option value="Supermarket" <%=partner.category==='Supermarket' ? 'selected' : '' %>
+                    >Supermarket
+                </option>
+                
+            </select>
+
+            <label for="priceBefore">Address:</label>
+            <input type="text" id="priceBefore" name="address"  required>
+
+            <label for="priceBefore">City:</label>
+            <input type="text" id="priceBefore" name="city"  required>
+
+            <label for="priceBefore">Country:</label>
+            <input type="text" id="priceBefore" name="country"  required>
+
+            <label for="priceBefore">Location:</label>
+            <input type="text" id="priceBefore" name="location"  required>
+
+
+            <label for="pickUpTime">Role:</label>
+            <select required class="form-select" id="gender" name="role">
+                <option value="Partner" <%=partner.category==='Partner' ? 'selected' : '' %>
+                    >Partner
+                </option>
+                <option value="Admin" <%=partner.category==='Admin' ? 'selected' : '' %>
+                    >Admin
+                </option>
+               
+                
+                
+            </select>
+
+            
+
+            <button type="submit">Create Partner</button>
+        </form>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

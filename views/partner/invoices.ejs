@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Invoices</title>
+</head>
+
+<body>
+
+  <%- include('partials/navbar') %>
+
+    <div class="dashboard">
+      <div class=" row">
+        <div style="text-align: center;" class="col-md-6 ">
+
+          <img src="/images/doughnut.png" alt="">
+        </div>
+
+
+        <div style="text-align: center;" class="col-md-6 ">
+          <img src="/images/coffee.png" alt="">
+        </div>
+      </div>
+      <div class="row">
+
+        <h1> Your Invoices Table</h1>
+
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Search orders..."
+            onkeyup="filterTable('searchInput', 'bagstable')">
+        </div>
+
+      </div>
+
+
+      <div class="table-container">
+        <table id="bagstable">
+          <thead>
+            <tr>
+              
+              <th>Invoice Number</th>
+              <th>Amount</th>
+              <th>Status</th>
+
+              <th>Paid At</th>
+              <th>Order Code</th>
+              <th>User Name</th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <% if (invoices.length> 0) { %>
+              <% invoices.forEach(invoice=> { %>
+                <tr>
+                  
+                  <td>
+                    <%= invoice.invoice_number %>
+                  </td>
+                  <td>$<%=invoice.amount %>
+                  </td>
+                  <td>
+                    <%= invoice.status %>
+                  </td>
+
+                  <td>
+                    <%= new Date(invoice.issued_at).toLocaleDateString() %>
+                  </td>
+                  <td>
+                    <%= invoice.order_code %>
+                  </td>
+                  <td>
+                    <%= invoice.user_name + ' ' + invoice.user_last_name %>
+                  </td>
+
+                </tr>
+                <% }); %>
+                  <% } else { %>
+                    <tr>
+                      <td style="text-align: center;" colspan="9">No invoices found .</td>
+                    </tr>
+                    <% } %>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

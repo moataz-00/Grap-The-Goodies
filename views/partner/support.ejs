@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Suppoert</title>
+</head>
+
+<body>
+
+
+
+  <%- include('partials/navbar') %>
+
+    
+        
+    
+
+    <div class="container support">
+          <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+        <div class=" row">
+            <div style="text-align: center;" class="col-md-6 ">
+  
+              <img src="/images/bread.png" alt="">
+            </div>
+  
+  
+            <div style="text-align: center;" class="col-md-6 ">
+              <img src="/images/burger.png" alt="">
+            </div>
+          </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+
+                <div  class="head">
+                    <h2 style="color: #333;">FAQS</h2>
+                </div>
+
+                <div  class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            How much does it cost ?
+                        </div>
+                        <div class="accordion-content">
+                            <p>The website is free to use, and Surprise Bags are sold for great prices that will
+                                differ depending on their contents.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Do you have a list with stores in the neighbourhood ?
+                        </div>
+                        <div class="accordion-content">
+                            <p>Once you sign up,
+                                you can search for participating stores near you, browse Surprise Bags, and even
+                                bookmark your favourite stores!</p>
+                        </div>
+                    </div>
+
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            What kind of products can I find on the app ?
+                        </div>
+                        <div class="accordion-content">
+                            <p>We work with lots of different types of stores and restaurants, so you'll find
+                                anything from supermarket groceries, to hotel breakfasts, to fresh pastries from
+                                bakeries. <br><br>
+
+                                Any fresh food that hasn't passed its use by date can be sold on the app.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header" onclick="toggleAccordion(this)">
+                            Do I need an account to use Grap The Goodies services ?
+                        </div>
+                        <div class="accordion-content">
+                            <p>Yes, signing up allows you to access all features, including saving offers,
+                                viewing your order history, and receiving notifications. It's quick and easy to
+                                create an account on the website.</p>
+                        </div>
+                    </div>
+
+
+                    <!-- Add more accordion items as needed -->
+                </div>
+
+
+
+
+            </div>
+
+
+            <div class="col-md-6">
+
+                <h2>Leave a message Mr <%= profile.name %></h2>
+                
+                 <form action="/partner/support/" method="POST" class="comment-form">
+                  <input style="display: none;" type="text" name="sender_id" value="<%= profile.id %>" >
+                    <textarea name="message" placeholder="Write your message here..." required></textarea>
+                    <button type="submit">Submit</button>
+                </form> 
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <script src="/aos/aos.js"></script>
+        <script src="/dashboard.js"></script>
+</body>
+
+</html>

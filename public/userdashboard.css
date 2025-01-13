@@ -1,0 +1,612 @@
+/*        ScrollBar 5    */
+
+::-webkit-scrollbar {
+    background-color: #000;
+    width: 12px;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(.5, #393d37), color-stop(1, #8cc342));
+    border-radius: 10px;
+}
+
+:root {
+    --bgcolor: rgb(0, 0, 0);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+.nav-link a {
+    text-decoration: none;
+    color: white;
+}
+
+.nav-link img {
+    border-radius: 50%;
+    width: 30%;
+
+}
+
+.nav-link {
+    text-align: center;
+}
+
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background-color: var(--bgcolor);
+    color: white;
+}
+
+ul {
+    list-style: none;
+}
+
+h1 {
+    font-size: 5rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 300ms ease;
+    width: fit-content;
+    cursor: pointer;
+}
+
+h1:hover {
+    transform: skew(10deg);
+}
+
+h1::before {
+    content: attr(data-name);
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background: var(--bgcolor);
+    height: 3rem;
+    overflow: hidden;
+    transition: all 300ms ease;
+    padding-left: 20px;
+}
+
+h1:hover::before {
+    top: -3px;
+    left: 0px;
+    color: #8cc342;
+}
+
+
+
+h1::after {
+    content: "";
+    height: 4px;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #8cc342;
+    transition: all 300ms ease;
+}
+
+h1:hover::after {
+    width: 120%;
+    outline: 5px solid rgb(2, 0, 36);
+}
+
+/* //////////////////////////// */
+
+/*  links sidebar CSS  */
+.head {
+    font-size: 6rem;
+    font-weight: bolder;
+    text-align: center;
+}
+
+.p1 {
+    font-size: x-large;
+    font-weight: bolder;
+    text-align: center;
+}
+
+
+.profile-image img {
+
+
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+
+}
+
+.vertical-line {
+    content: "";
+    background-color: #8cc342;
+    height: 100px;
+    width: 3px;
+
+
+}
+
+h2 {
+    font-size: 5rem;
+    word-spacing: 10px;
+    text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+.checkout_card {
+
+    margin: auto;
+    background: black;
+    position: center;
+    align-self: center;
+
+
+
+    display: flex;
+    flex-direction: row;
+
+}
+
+.checkout_card .leftside {
+    background: #030303;
+    width: 10rem;
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.checkout_card .rightside {
+    background-color: #fff;
+    color: #000;
+    border-bottom-right-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    padding: 1rem 2rem 3rem 3rem;
+}
+
+
+.checkout_card h2 {
+    font-size: 2rem;
+    word-spacing: 10px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.checkout_card p {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: .8rem 0;
+}
+
+.checkout_card .inputbox {
+    color: #030303;
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1.5px solid #ccc;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-family: 'Roboto', sans-serif;
+    color: #615a5a;
+    font-size: 1.1rem;
+    font-weight: 500;
+    outline: none;
+}
+
+.checkout_card .expcvv {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.6rem;
+}
+
+.checkout_card .expcvv_text {
+    padding-right: 1rem;
+}
+
+.checkout_card .expcvv_text2 {
+    padding: 0 1rem;
+}
+
+.checkout_card .button {
+    background: linear-gradient(135deg, #8cc342 0%, #3e8e41 100%);
+    padding: 15px;
+    border: none;
+    border-radius: 50px;
+    color: white;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-top: 10px;
+    width: 100%;
+    letter-spacing: .11rem;
+    outline: none;
+}
+
+.checkout_card .button:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 3px 3px 6px #38373785;
+}
+
+
+@media screen and (max-width: 768px) {
+    .card-img-top {
+        width: 100% !important;
+    }
+
+    .row img {
+        width: 80px;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .checkout_card .card {
+        flex-direction: column;
+        width: auto;
+
+    }
+
+    .checkout_card .leftside {
+        width: 100%;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 0;
+        border-top-right-radius: 0;
+        border-radius: 0;
+    }
+
+    .checkout_card .rightside {
+        width: auto;
+        border-bottom-left-radius: 1.5rem;
+        padding: 0.5rem 3rem 3rem 2rem;
+        border-radius: 0;
+    }
+
+    .dissapear {
+        display: none;
+    }
+
+
+}
+
+
+
+/* General Table Styles */
+.order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 16px;
+    text-align: left;
+    background-color: #1e1e1e;
+    /* Dark background */
+    color: #d4d4d4;
+    /* Light text color for readability */
+    border: 1px solid #2c2c2c;
+    /* Subtle border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    /* Rounded corners */
+    overflow: hidden;
+    /* For rounded edges on shadow */
+}
+
+/* Table Header Styles */
+.order-table thead tr {
+    background-color: #2a3d23;
+    /* Dark green header */
+    color: #8cc342;
+    /* Bright green text */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.order-table th,
+.order-table td {
+    padding: 12px 15px;
+    border: 1px solid #2c2c2c;
+    /* Subtle border for rows */
+}
+
+/* Table Body Row Styles */
+.order-table tbody tr:nth-child(odd) {
+    background-color: #252525;
+    /* Alternate row background */
+}
+
+.order-table tbody tr:nth-child(even) {
+    background-color: #2b2b2b;
+    /* Slightly lighter dark row */
+}
+
+.order-table tbody tr:hover {
+    background-color: #333;
+    /* Row hover effect */
+    transition: background-color 0.3s ease;
+}
+
+/* Links and Buttons */
+.order-table a img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+}
+
+.order-table a img:hover {
+    transform: scale(1.2);
+}
+
+/* Text Alignment for Status */
+.order-table td {
+    vertical-align: middle;
+    color: #d4d4d4;
+    /* Default text color */
+}
+
+/* Status Specific Styles */
+.order-table td:nth-child(2) {
+    font-weight: bold;
+}
+
+.order-table td:nth-child(2):contains("reserved") {
+    color: #8cc342;
+    /* Bright green for reserved */
+}
+
+.order-table td:nth-child(2):contains("picked up") {
+    color: #00b894;
+    /* Green for picked-up */
+}
+
+.order-table td:nth-child(2):contains("cancelled") {
+    color: #e74c3c;
+    /* Red for cancelled */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .order-table {
+        font-size: 14px;
+    }
+
+    .order-table th,
+    .order-table td {
+        padding: 10px;
+    }
+}
+
+
+
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+
+}
+
+.btn-quantity {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1.5em;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+#quantity {
+    width: 30px;
+    text-align: end;
+    font-size: 1.1em;
+    border: none;
+    background-color: transparent;
+    color: black;
+}
+
+
+#quantityNotice,
+#pricePerBag,
+#totalPrice {
+    font-size: 16px;
+    color: #8cc342;
+    margin-top: 5px;
+}
+
+
+.alert {
+    padding: 15px;
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.alert.error {
+    background-color: #f44336;
+    /* Red */
+}
+
+.alert.success {
+    background-color: #4CAF50;
+    /* Green */
+}
+
+.horzintal-line {
+    width: 100%;
+    content: "";
+    background-color: #8cc342;
+    height: 3px;
+
+}
+
+
+/* Footer General Styling */
+.footer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer .horzintal-line {
+    width: 100%;
+    content: "";
+    background-color: #8cc342;
+    height: 3px;
+}
+
+.footer p {
+    font-size: 3.5rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+.copy-rights span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+.footer h1 {
+    font-size: 1.5rem;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 300ms ease;
+    width: fit-content;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.footer h1:hover {
+    transform: skew(0deg);
+}
+
+.footer h1::before {
+    content: attr(data-name);
+    position: absolute;
+    top: 0;
+    left: -20px;
+    background: var(--bgcolor);
+    height: 2rem;
+    overflow: hidden;
+    transition: all 300ms ease;
+    padding-left: 20px;
+}
+
+.footer h1::after {
+    content: "";
+    height: 4px;
+    width: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #8cc342;
+    transition: all 300ms ease;
+}
+
+.footer h1:hover::after {
+    width: 120%;
+    outline: 5px solid rgb(2, 0, 36);
+}
+
+.footer img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.footer img:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Styles */
+
+/* For Tablets (screens <= 768px) */
+@media screen and (max-width: 768px) {
+    .footer {
+        width: 90%;
+        /* Adjust container width */
+    }
+
+    .footer p {
+        font-size: 1.3rem;
+    }
+
+    .footer h1 {
+        font-size: 1.3rem;
+    }
+
+    .footer h1::before {
+        height: 1.8rem;
+    }
+
+    .footer img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .copy-rights span {
+        font-size: 0.8rem;
+    }
+
+
+    .row img {
+        width: 80px;
+        /* Resize logo for smaller screens */
+    }
+}
+
+/* For Mobile Phones (screens <= 480px) */
+@media screen and (max-width: 480px) {
+    .footer {
+        width: 95%;
+        /* Adjust container width for mobile */
+    }
+
+    .footer p {
+        font-size: 1rem;
+    }
+
+    .footer h1 {
+        font-size: 1rem;
+    }
+
+    .footer img {
+        width: 40px;
+        height: 40px;
+    }
+
+    .copy-rights span {
+        font-size: 0.7rem;
+    }
+}

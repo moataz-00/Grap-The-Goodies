@@ -1,0 +1,95 @@
+<div id="nav-bar">
+  <input type="checkbox" id="nav-toggle" />
+
+  <div id="nav-header">
+    <div id="nav-title" href="/partner/dashboard">
+      <img width="50%" src="/images/logo_white.png" alt="">
+    </div>
+    <label for="nav-toggle">
+      <span id="nav-toggle-burger"></span>
+    </label>
+    <hr />
+  </div>
+
+  <div id="nav-content">
+
+     <% if (role=="admin") { %>
+      <div class="nav-button">
+        <a href="/admin/postPartners/<%= partnerId %>"><span>Add Partner</span></a>
+      </div>
+
+      <div class="nav-button">
+        <a href="/admin/viewPartners/<%= partnerId %>"><span>View Partners</span></a>
+      </div>
+
+      <div class="nav-button">
+        <a href="/admin/viewInvoices/<%= partnerId %>"><span>View Invoices</span></a>
+      </div>
+
+      <div class="nav-button">
+        <a href="/admin/viewOrders/<%= partnerId %>"><span>View Orders</span></a>
+      </div>
+
+      <div class="nav-button">
+        <a href="/admin/viewPartnerSupport/<%= partnerId %>"><span>View Partners Messages</span></a>
+      </div>
+     
+
+     <% } else { %>
+      
+
+     
+
+    <div class="nav-button">
+      <a href="/partner/dashboard/<%= partnerId %>"><span>Your Bags</span></a>
+    </div>
+    <div class="nav-button">
+      <a href="/partner/orders/<%= partnerId %>"><span>Your Orders</span></a>
+    </div>
+    <div class="nav-button">
+      <a href="/partner/invoices/<%= partnerId %>"><span>Your Invoices</span></a>
+    </div>
+    <hr />
+    <div class="nav-button">
+      <a href="/partner/support/<%= partnerId %>"><span>Support</span></a>
+    </div>
+
+    
+<% } %>
+    
+     
+   
+    
+
+   
+
+    
+  </div>
+
+  <input type="checkbox" id="nav-footer-toggle" />
+
+  <div id="nav-footer">
+    <div id="nav-footer-heading">
+
+      <div id="nav-footer-avatar">
+        <% if (partnerPhoto) { %>
+          <img src="/uploads/<%= partnerPhoto %>" alt="Partner Photo" class="partner-photo">
+          <% } %>
+      </div>
+      
+      <div id="nav-footer-titlebox">
+        <a id="nav-footer-title" href="/partner/profile/<%= partnerId %>">
+          <span>
+            <%= partnerName %>
+          </span>
+        </a>
+
+      </div>
+      <div style="margin-right: 10px;" id="nav-footer-titlebox">
+        <a  href="/logout" class="logout-button"><button class="btn btn-danger"><span>Logout</span></button></a>
+      </div>
+      
+    </div>
+
+  </div>
+</div>

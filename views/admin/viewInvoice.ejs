@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Profile</title>
+</head>
+
+<body>
+
+
+  <%- include('../partner/partials/navbar') %>
+
+    <!-- <div data-aos="fade-up" data-aos-duration="3000" class="dashboard">
+        
+    </div> -->
+
+    <div class="profile-container">
+
+      <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+
+          <div class=" row">
+            <div style="text-align: center;" class="col-md-6 ">
+
+              <img src="/images/bread.png" alt="">
+            </div>
+
+
+            <div style="text-align: center;" class="col-md-6 ">
+              <img src="/images/carrot.png" alt="">
+            </div>
+          </div>
+          <!-- Profile Card -->
+          <div class="profile-card">
+
+            <div style="text-align: start;" class="profile-info">
+              <h2 style="text-align: center;">
+                <%= invoice.invoice_number %>
+              </h2>
+              <p class="mt-2">Invoice Amount: <%= invoice.amount %>
+              </p>
+
+              <p class="mt-2">Order Code: <%= invoice.order_code %>
+              </p>
+              <p class="mt-2">Invoice To: <%= invoice.partner_name %>
+              </p>
+              <p class="mt-2">Created At: <% const createdAt=new Date(invoice.issued_at); %>
+                  <%= createdAt.getDate() %>/<%= createdAt.getMonth() + 1 %>/<%= createdAt.getFullYear() %>
+                        </small>
+              </p>
+
+              <p class="mt-2">Invoice Satus: <%= invoice.status %>
+              </p>
+
+            </div>
+            <div class="profile-actions">
+
+
+              <form action="/update-status" method="POST">
+                <select required class="form-select"  name="status" onchange="this.form.submit()">
+                  <option value="" disabled selected>Status</option>
+                  <option value="Un paid">Un paid</option>
+                  <option value="Paid">Paid</option>
+
+                </select>
+                <input type="hidden" name="invoice_id" value="<%= invoice.invoice_id %>" /> <!-- Replace with the ID of the item -->
+              </form>
+
+            </div>
+
+
+          </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

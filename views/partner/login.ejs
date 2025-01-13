@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Business Log In</title>
+</head>
+
+<body>
+
+   
+
+
+    <div style="width: 100%;" class="row">
+        <div class=" col-md-4 mt-3">
+
+        </div>
+        <div class="nav-link col-md-4 mt-3">
+            <img src="/images/logo_green.png" alt="">
+        </div>
+        
+    </div>
+
+    <section style="width: 100%;">
+
+
+        <div class="container support">
+            <section>
+                <div data-aos="fade-up" data-aos-duration="3000" class="mt-5">
+                    <div class="row">
+                        <p class="head"><span style="color: #8cc342;">Hello,</span> Partner</p>
+                    </div>
+                    <div class="row">
+                        <p style="word-spacing: 5px;" class="p1 ">
+                            lets sell some surpluse
+                        </p>
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+            <div data-aos="fade-up" data-aos-duration="3000" class="seprate row">
+                <div style="text-align: center;" class="col-md-4 mt-5">
+
+                    <img src="/images/bread.png" alt="">
+                </div>
+
+                <div class="col-md-4">
+                    <div class="vertical-line mx-auto mt-5"></div>
+                </div>
+
+                <div style="text-align: center;" class="col-md-4 mt-5">
+                    <img src="/images//carrot.png" alt="">
+                </div>
+            </div>
+
+            <section>
+                <div class="row mt-5">
+                    <div class="col-md-4">
+
+                        <div data-aos="fade-up" data-aos-duration="3000" class="head">
+                            <p>FAQS</p>
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-duration="3000" class="accordion">
+                            <div class="accordion-item">
+                                <div class="accordion-header" onclick="toggleAccordion(this)">
+                                    I'd like to sign up my business.
+                                </div>
+                                <div class="accordion-content">
+                                    <p>Excellent news! To proceed, please provide the necessary details on the following
+                                        page. Once submitted, our team will contact you.</p>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <div class="accordion-header" onclick="toggleAccordion(this)">
+                                    I have a question about MyStore, my account, or my invoices.
+                                </div>
+                                <div class="accordion-content">
+                                    <p>All your account information, including details and invoices, are available in
+                                        your MyStore account. </p>
+                                </div>
+                            </div>
+
+
+                            <!-- Add more accordion items as needed -->
+                        </div>
+
+
+
+
+                    </div>
+
+
+
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="col-md-8 mx-auto">
+
+
+
+                        <div class="form-container">
+                            <div style="color: #8cc342" class="head">
+                                Log <span style="color: white;">In</span>
+                            </div>
+                            <form action="/partner/login" method="post">
+                                <% if (failedMessage) { %>
+                                    <div class="alert error">
+                                        <%= failedMessage %>
+                                    </div>
+                                    <% } %>
+                                <div class="form-row">
+
+                                    <div class="input-data">
+                                        <input id="emailInput1" type="text" name="email" required>
+                                        <div class="underline"></div>
+                                        <label for="">Email <span style="color: red;" class="invalid">
+                                            </span></label>
+                                    </div>
+
+                                    <div class="input-data">
+                                        <input id="category" type="password" name="password" required>
+                                        <div class="underline"></div>
+                                        <label for="">Password <span style="color: red;" class="invalid">
+                                            </span></label>
+                                    </div>
+
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="input-data textarea">
+
+                                        <div class="button-container">
+                                            <button type="submit" id="submitButton1" class="custom-button">Log In</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+        </div>
+
+    </section>
+
+
+    <!-- footer -->
+
+
+    <div class=" footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="row mt-5">
+            <div class="col-md-8 typewriter">
+                <p id="app"></p>
+            </div>
+
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="/images/facebook.png" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/images/linkedin.png" alt="">
+                    </div>
+                    <div class="col-md-3">
+                        <img src="/images/youtube.png" alt="">
+                    </div>
+                   
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        <div class="row copy-rights">
+            <span style="text-align: center;">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+
+
+    </div>
+
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.bundle.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.min.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+</body>
+
+</html>

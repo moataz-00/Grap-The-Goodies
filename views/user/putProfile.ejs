@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Business Log In</title>
+</head>
+
+<body>
+
+
+
+
+    <div style="width: 100%;" class="row">
+        <div class=" col-md-4 mt-3">
+
+        </div>
+        <div class="nav-link col-md-4 mt-3">
+            <img src="/images/logo_green.png" alt="">
+        </div>
+
+    </div>
+
+    <section style="width: 100%;">
+
+
+        <div class="container support">
+            <% if (successMessage) { %>
+                <div class="alert success">
+                    <%= successMessage %>
+                </div>
+                <% } %>
+                    <section>
+                        <div data-aos="fade-up" data-aos-duration="3000" class="mt-5">
+                            <div class="row">
+                                <p class="head"><span style="color: #8cc342;">Hello,</span>
+                                    <%= profile.firstName %>
+                                </p>
+                            </div>
+                            <div class="row">
+                                <p style="word-spacing: 5px;" class="p1 ">
+                                    Do You Want A Help ?
+                                </p>
+                            </div>
+
+
+                        </div>
+
+
+                    </section>
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="seprate row">
+                        <div style="text-align: center;" class="col-md-4 mt-5">
+
+                            <img src="/images/bread.png" alt="">
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="vertical-line mx-auto mt-5"></div>
+                        </div>
+
+                        <div style="text-align: center;" class="col-md-4 mt-5">
+                            <img src="/images/carrot.png" alt="">
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="col-md-8">
+
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="head">
+                                <p>Details</p>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="card text-bg-dark mx-auto"
+                                style="max-width: 600px;">
+                                <form action="/profile/update/<%= profile.id %>" method="POST">
+                                    <div class="card-body ">
+                                        <h5 class="card-title  my-3">
+                                            <label>Fisrt Name</label>
+                                            <input name="firstName" type="text" value="<%= profile.firstName %>">
+
+                                        </h5>
+                                        <h5 class="card-title  my-3">
+                                            <label>Last Name</label>
+                                            <input name="lastName" type="text" value="<%= profile.lastName %>">
+
+                                        </h5>
+                                        <h5 class="card-title  my-3">
+                                            <label>Email</label>
+                                            <input name="email" type="text" value="<%= profile.email %>">
+
+                                        </h5>
+                                        <h5 class="card-title  my-3">
+                                            <label>Phone</label>
+                                            <input name="phone" type="text" value="<%= profile.phone %>">
+
+                                        </h5>
+                                        <h5 class="card-title  my-3">
+                                            <label for="gender" class="form-label">Gender</label>
+                                            <select class="form-select" id="gender" name="gender">
+                                                <option value="male" <%=profile.gender==='male' ? 'selected' : '' %>
+                                                    >Male
+                                                </option>
+                                                <option value="female" <%=profile.gender==='female' ? 'selected' : '' %>
+                                                    >Female</option>
+                                            </select>
+
+                                        </h5>
+                                        <h5 class="card-title my-3"><label for="">Birth Date</label>
+                                            &nbsp; <span style="color: white; font-size:medium">
+                                                <% const birthdate=new Date(profile.birthdate); %>
+                                                    <%= birthdate.getDate() %>/<%= birthdate.getMonth() + 1 %>/<%=
+                                                                birthdate.getFullYear() %>
+                                            </span>
+                                            <input type="date" name="birthdate">
+                                        </h5>
+
+
+
+
+
+
+                                        <div class="card-footer row">
+                                            <p class="col-md-6"><small class="text-muted">Member since: <% const
+                                                        createdAt=new Date(profile.createdAt); %>
+                                                        <%= createdAt.getDate() %>/<%= createdAt.getMonth() + 1 %>/<%=
+                                                                    createdAt.getFullYear() %></small>
+                                            </p>
+
+                                            <div style="text-align: end;" class="col-md-6">
+                                                <input type="image" src="/images/done.png" alt="Submit" width="20%" />
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </form>
+
+
+                            </div>
+
+                        </div>
+
+
+
+
+
+                        <div class="col-md-4">
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="head">
+                                <p>FAQS</p>
+                            </div>
+
+                            <div data-aos="fade-up" data-aos-duration="3000" class="accordion">
+                                <div class="accordion-item">
+                                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        How much does it cost ?
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>The website is free to use, and Surprise Bags are sold for great prices that
+                                            will
+                                            differ depending on their contents.</p>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        Do you have a list with stores in the neighbourhood ?
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>Once you sign up,
+                                            you can search for participating stores near you, browse Surprise Bags, and
+                                            even
+                                            bookmark your favourite stores!</p>
+                                    </div>
+                                </div>
+
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        What kind of products can I find on the app ?
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>We work with lots of different types of stores and restaurants, so you'll
+                                            find
+                                            anything from supermarket groceries, to hotel breakfasts, to fresh pastries
+                                            from
+                                            bakeries. <br><br>
+
+                                            Any fresh food that hasn't passed its use by date can be sold on the app.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div class="accordion-item">
+                                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                                        Do I need an account to use Grap The Goodies services ?
+                                    </div>
+                                    <div class="accordion-content">
+                                        <p>Yes, signing up allows you to access all features, including saving offers,
+                                            viewing your order history, and receiving notifications. It's quick and easy
+                                            to
+                                            create an account on the website.</p>
+                                    </div>
+                                </div>
+
+
+                                <!-- Add more accordion items as needed -->
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+
+
+        </div>
+
+    </section>
+
+
+    <!-- footer -->
+
+
+    <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.bundle.js"></script>
+    <script src="/bottstrap 5 modified/bootstrap.min.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+</body>
+
+</html>

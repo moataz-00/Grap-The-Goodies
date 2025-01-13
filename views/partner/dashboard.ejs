@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+  <link rel="stylesheet" href="/dashboard.css">
+  <link rel="icon" type="image/png" href="/images/logo_green.png">
+  <title>Dash Board</title>
+</head>
+
+<body>
+
+
+
+
+
+  <%- include('partials/navbar') %>
+
+
+    <div class="dashboard">
+
+      <!-- Success message -->
+      <% if (successMessage) { %>
+        <div class="alert success">
+          <%= successMessage %>
+        </div>
+        <% } %>
+
+          <div style="text-align: end;" class="row">
+            <a href="/partner/postBag/<%= partnerId %>"><img src="/images/add.png" alt=""></a>
+          </div>
+
+          <div class="row">
+
+
+
+            <div class=" row">
+              <div style="text-align: center;" class="col-md-6 ">
+
+                <img src="/images/bread.png" alt="">
+              </div>
+
+
+              <div style="text-align: center;" class="col-md-6 ">
+                <img src="/images/carrot.png" alt="">
+              </div>
+            </div>
+
+            <h1>Bags Table</h1>
+
+
+
+
+
+
+            <!-- Search Bar -->
+            <div class="search-container">
+              <input type="text" id="searchInput" placeholder="Search orders..."
+                onkeyup="filterTable('searchInput', 'bagstable')">
+            </div>
+
+          </div>
+
+
+          <div class="table-container">
+            <% if (bags.length> 0) { %>
+              <table id="bagstable">
+                <thead>
+                  <tr>
+                    
+                    <th>Bag Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Date Added</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% bags.forEach(bag=> { %>
+                    <tr>
+                     
+                      <td>
+                        <%= bag.name %>
+                      </td>
+                      <td>
+                        <%= bag.priceAfter %>
+                      </td>
+                      <td>
+                        <%= bag.quantity %>
+                      </td>
+                      <td>
+                        <%= bag.addedAt.toLocaleDateString() %>
+                      </td>
+                      <td>
+                        <a href="/partner/viewBag/<%= bag.id %>"><button
+                            class="edit-btn">View</button></a>
+
+                      </td>
+                    </tr>
+                    <% }) %>
+
+                </tbody>
+              </table>
+
+              <% } else { %>
+                <p>No bags found.</p>
+                <% } %>
+          </div>
+    </div>
+
+
+
+
+    <script src="/dashboard.js"></script>
+</body>
+
+</html>

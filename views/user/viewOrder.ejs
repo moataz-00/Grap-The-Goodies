@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/userdashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Orders</title>
+</head>
+
+<body>
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/home" class="nav-link">
+                            <img src="/images/home.png" alt=""><br>Home
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/Orders/<%=userId%>" class="nav-link">
+                            <img src="/images/time.png" alt=""><br>Order History
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Center Section -->
+            <div class="col-12 col-md-4 text-center mt-3">
+                <img style="border-radius: 100%;" width="30%" src="/images/logo_green.png" alt="">
+            </div>
+    
+            <!-- Right Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/profile/<%=userId%>" class="nav-link">
+                            <img src="/images/user.png" alt=""><br>Profile
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/logout" class="nav-link">
+                            <img src="/images/logout.png" alt=""><br>Log Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-5">
+            <p class="p1">Together, we’re building a world where food is shared, not wasted <br> join <span
+                    style="color: #8cc342;">Grap The Goodies</span> on this journey.</p>
+        </div>
+    </section>
+
+
+    <div class="container">
+
+        <div data-aos="fade-up" data-aos-duration="3000" class="seprate row">
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/bread.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/meat.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/salad.png" alt="">
+
+            </div>
+
+
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/burger.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+
+                <img width="50%" src="/images/carrot.png" alt="">
+
+            </div>
+
+            <div style="text-align: center;" class="col-4 col-md-2 mt-5">
+                <img width="50%" src="/images/coffee.png" alt="">
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="container">
+        <div data-aos="fade-up" data-aos-duration="3000" style="text-align: center;">
+            <h2>Order <%= order.orderCode %>
+            </h2>
+        </div>
+
+        <div data-aos="fade-up" data-aos-duration="3000" class="col">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card text-bg-dark h-100 " style="width: auto;">
+                        <img src="/uploads/<%= order.photo %>" class="card-img-top" alt="Partner Image"
+                            style="height:auto; object-fit: cover;">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title">
+                                        <img width="30%" src="/images/bag.png" alt="">
+                                        <%= order.bag_name %>
+                                    </h5>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-title">
+                                        <img width="30%" src="/images/quantity.png" alt="">
+                                        <%= order.orderQuantity %>
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <p class="card-text">
+
+
+                                        <img width="20%" src="/images/time.png" alt=""><br>
+                                        <img width="10%" src="/images/start.png" alt="">
+                                        <%= `${new Date(order.pickUpTimeStart).getDate()}/${new
+                                            Date(order.pickUpTimeStart).getMonth() + 1}/${new
+                                            Date(order.pickUpTimeStart).getFullYear()}, ${new
+                                            Date(order.pickUpTimeStart).toLocaleTimeString()}` %> <br>
+                                            <img width="10%" src="/images/pause.png" alt="">
+                                            <%= `${new Date(order.pickUpTimeEnd).getDate()}/${new
+                                                Date(order.pickUpTimeEnd).getMonth() + 1}/${new
+                                                Date(order.pickUpTimeEnd).getFullYear()}, ${new
+                                                Date(order.pickUpTimeEnd).toLocaleTimeString()}` %><br>
+
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <iframe data-aos="fade-up" data-aos-duration="3000" src="<%=order.location%>" width="600"
+                        height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+
+                    <div class="mt-5">
+                        <div data-aos="fade-up" data-aos-duration="3000" class="row">
+                            <div class="col-md-1"><img width="150%" src="/images/one.png" alt=""></div>
+                            <div class="col-md-11">
+                                <p> When you pick up the mystery bag, you will change status to picked up by click on
+                                    <span style="color: #8cc342;">- picked Up icon -</span> downhere.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                            <div class="col-md-1">
+                                <img width="150%" src="/images/two.png" alt="">
+                            </div>
+
+                            <div class="col-md-11">
+                                <p> You can refund your money in
+                                    15-minutes from reserving the mystery bag , we will take only<span
+                                        style="color: #8cc342;"> 5%</span> for order fees.</p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                            <div class="col-md-1">
+                                <img width="150%" src="/images/three.png" alt="">
+                            </div>
+
+                            <div class="col-md-11">
+
+                                <p> Unfortunately after <span style="color: #8cc342;">- 15 minutes -</span>
+                                    you will not be able to cancel the reservation.
+                                </p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                            <div style="text-align: center;" class="col-6 col-md-6">
+                                <form action="/order/pickedUp/<%= order.order_id %>" method="POST">
+                                    <input type="image" src="/images/done.png" alt="Picked Up" class="action-image">
+                                    <br> Picked Up
+                                </form>
+                            </div>
+
+                            <div style="text-align: center;" class="col-6 col-md-6">
+
+                                <!-- Form for Cancelled Action -->
+                                <form action="/order/cancelled/<%= order.order_id %>" method="POST">
+                                    <input type="image" src="/images/cancel.png" alt="Cancelled" class="action-image">
+                                    <br>Cancel
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- footer -->
+
+
+    <!-- footer -->
+
+
+    <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+
+
+    
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        AOS.init();
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+
+
+</body>
+
+</html>

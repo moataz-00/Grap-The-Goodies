@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/aos/aos.css">
+    <link rel="stylesheet" href="/bottstrap 5 modified/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/userdashboard.css">
+    <link rel="icon" type="image/png" href="/images/logo_green.png">
+    <title>Shop</title>
+</head>
+
+<body>
+
+
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Left Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/home" class="nav-link">
+                            <img src="/images/home.png" alt=""><br>Home
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/Orders/<%=userId%>" class="nav-link">
+                            <img src="/images/time.png" alt=""><br>Order History
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Center Section -->
+            <div class="col-12 col-md-4 text-center mt-3">
+                <img style="border-radius: 100%;" width="30%" src="/images/logo_green.png" alt="">
+            </div>
+    
+            <!-- Right Section -->
+            <div class="col-12 col-md-4">
+                <div class="row">
+                    <div class="col-6 text-center mt-3">
+                        <a href="/user/profile/<%=userId%>" class="nav-link">
+                            <img src="/images/user.png" alt=""><br>Profile
+                        </a>
+                    </div>
+                    <div class="col-6 text-center mt-3">
+                        <a href="/logout" class="nav-link">
+                            <img src="/images/logout.png" alt=""><br>Log Out
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <section>
+        <div data-aos="fade-up" data-aos-duration="3000" class="row mt-5">
+            <p class="p1">Together, we’re building a world where food is shared, not wasted <br> join <span
+                    style="color: #8cc342;">Grap The Goodies</span> on this journey.</p>
+        </div>
+    </section>
+
+
+
+    <div data-aos="fade-up" data-aos-duration="3000" class="seprate row">
+        <div style="text-align: center;" class="col-md-4 mt-5">
+
+            <img src="/images/doughnut.png" alt="">
+        </div>
+
+        <div class="col-md-4">
+            <div class="vertical-line mx-auto mt-5"></div>
+        </div>
+
+        <div style="text-align: center;" class="col-md-4 mt-5">
+            <img src="/images/coffee.png" alt="">
+        </div>
+    </div>
+
+
+    <div>
+        <p data-aos="fade-up" data-aos-duration="3000" class="text-center mb-4 fs-1"> <span
+                style="color: #8cc342;">Grab</span> Your Goodies & Enjoy It.</p>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div data-aos="fade-up" data-aos-duration="3000" class="col">
+                    <div class="card text-bg-dark h-100 " style="width: auto;">
+                        <img src="/uploads/<%= bag.bagPhoto %>" class="card-img-top" alt="Partner Image"
+                            style="height: 500px; object-fit: cover;">
+
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5 class="card-title">
+                                        <img width="20%" src="/images/bag.png" alt="">
+                                        <%= bag.bagName %>
+                                    </h5>
+                                </div>
+
+                                <div style="text-align: end;" class="col-md-6">
+                                    <div class="profile-image">
+                                        <img src="/uploads/<%= bag.partnerPhoto %>" alt="Profile Picture">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="card-text">
+                                <%= bag.description %>
+                            </p>
+
+                            <p class="card-text">
+                                <img width="10%" src="/images/quantity.png" alt="">
+                                <%= bag.quantity %>
+                            </p>
+
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <p class="card-text">
+
+
+                                        <img width="20%" src="/images/time.png" alt=""><br>
+                                        <img width="10%" src="/images/start.png" alt="">
+                                        <%= `${new Date(bag.pickUpTimeStart).getDate()}/${new
+                                            Date(bag.pickUpTimeStart).getMonth() + 1}/${new
+                                            Date(bag.pickUpTimeStart).getFullYear()}, ${new
+                                            Date(bag.pickUpTimeStart).toLocaleTimeString()}` %> <br>
+                                            <img width="10%" src="/images/pause.png" alt="">
+                                            <%= `${new Date(bag.pickUpTimeEnd).getDate()}/${new
+                                                Date(bag.pickUpTimeEnd).getMonth() + 1}/${new
+                                                Date(bag.pickUpTimeEnd).getFullYear()}, ${new
+                                                Date(bag.pickUpTimeEnd).toLocaleTimeString()}` %><br>
+
+                                    </p>
+                                </div>
+                                <div style="text-align:-webkit-right;" class="col-md-6">
+
+                                    <div class="col-md-4">
+                                        <img width="60%" src="/images/price.png" alt=""><br>
+                                        <strong style="color: #8cc342;">$<%= bag.priceBefore %></strong> <br>
+                                        <strong style="color:#6c757d; text-decoration: line-through;">$<%=
+                                                bag.priceAfter %>
+                                        </strong>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Added on <%= `${new Date(bag.addedAt).getDate()}/${new
+                                    Date(bag.addedAt).getMonth() + 1}/${new Date(bag.addedAt).getFullYear()}` %>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-6">
+                <!-- <iframe src="" frameborder="0"></iframe> -->
+
+                <iframe data-aos="fade-up" data-aos-duration="3000" src="<%=bag.partnerLocation%>" width="600"
+                    height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                <div class="mt-5">
+                    <div data-aos="fade-up" data-aos-duration="3000" class="row">
+                        <div class="col-md-1"><img width="150%" src="/images/one.png" alt=""></div>
+                        <div class="col-md-11">
+                            <p> When you pay for a mystery bag, we will give you a
+                                code which you will use it when you pick up
+                                the
+                                mystery bag </p>
+                        </div>
+
+                    </div>
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                        <div class="col-md-1">
+                            <img width="150%" src="/images/two.png" alt="">
+                        </div>
+
+                        <div class="col-md-11">
+                            <p> You can refund your money in
+                                15-minutes from reserving the mystery bag </p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                        <div class="col-md-1">
+                            <img width="150%" src="/images/three.png" alt="">
+                        </div>
+
+                        <div class="col-md-11">
+
+                            <p> when you pick up the mystery bag,
+                                you will change order status - <span style="color: #8cc342;">in order history</span> -
+                                to picked
+                                up
+                            </p>
+
+                        </div>
+                    </div>
+
+
+
+                    <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                        <div class="col-md-1">
+                            <img width="150%" src="/images/four.png" alt="">
+                        </div>
+
+                        <div class="col-md-11">
+                            <p> when you pick up the mystery bag, it
+                                prfrer to write a feedback & take a picture of the mystery bag you got & upload it -
+                                <span style="color: #8cc342;">in order history</span> - for enhancing our services
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                <div data-aos="fade-up" data-aos-duration="3000" class="row mt-3">
+                    <div class="col-md-10">
+                        <p>Pick Up Your Bag Between <span style="color: #8cc342;">Pick Up Time Start</span> & <span
+                                style="color: #8cc342;">Pick Up Time End</span> </p>
+                        <img width="5%" src="/images/start.png" alt=""> : Pick Up Time Start <br>
+                        <img width="5%" src="/images/pause.png" alt=""> : Pick Up Time End
+                    </div>
+                    <div class="col-md-2">
+
+                        <a href="/user/checkout/<%= bag.bagId %>"><img src="/images/cart.png" alt=""></a>Check Out
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+
+
+    <!-- footer -->
+
+
+    <!-- footer -->
+
+
+    <div class="footer mt-5">
+        <div class="horzintal-line mx-auto mt-5"></div>
+        <div class="row mt-5 text-center">
+            <!-- Navigation Links -->
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/home">
+                            <h1 data-name="Home">Home</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/about">
+                            <h1 data-name="About">About</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-3 mx-auto">
+                <ul id="nav">
+                    <li class="nav-link">
+                        <a href="/support">
+                            <h1 data-name="Support">Support</h1>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Dynamic Text and Social Links -->
+        <div class="row mt-5 align-items-center">
+            <!-- Typewriter Effect Text -->
+            <div class="col-md-8 typewriter text-center">
+                <p id="app"></p>
+            </div>
+            <!-- Social Media Icons -->
+            <div class="col-md-4 text-center">
+                <div class="row">
+                    <div class="col-4">
+                        <a href="https://www.facebook.com/GrabTheGoodies">
+                            <img src="/images/facebook.png" alt="Facebook">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.linkedin.com/company/grab-the-goodies">
+                            <img src="/images/linkedin.png" alt="LinkedIn">
+                        </a>
+                    </div>
+                    <div class="col-4">
+                        <a href="https://www.instagram.com/grab.the.goodies/">
+                            <img src="/images/instagram.png" alt="Instagram">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright Section -->
+        <div class="row copy-rights mt-5">
+            <span class="w-100 text-center">Copyright © 2023—2024 Grap The Goodies. All Rights Reserved.</span>
+        </div>
+    </div>
+
+
+
+
+    
+
+
+    <script src="/aos/aos.js"></script>
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <script src="/index.js"></script>
+
+
+    <script>
+        AOS.init();
+        var app = document.getElementById('app');
+
+        var typewriter = new Typewriter(app, {
+            loop: false,
+            delay: 75,
+        });
+
+        typewriter
+            .pauseFor(1000)
+
+            .typeString('<span style="color: #8cc342;">Grab</span> The Goodies')
+            .pauseFor(3000)
+            .start();
+    </script>
+
+
+</body>
+
+</html>
